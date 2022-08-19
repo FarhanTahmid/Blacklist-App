@@ -14,7 +14,7 @@ from . import addComplainsToDatabase
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.db import connections
-from .models import Users,Complain
+from .models import Users,Complain,UserPic
 
 def homepage(request):
     return render(request,'homepage.html')
@@ -98,7 +98,10 @@ def profile(request):
     studentid = str(current_user.username)
     
     person=Users.objects.raw("SELECT * FROM BlackList_app_users WHERE userid='"+studentid+"'")         
-    
+    foruserPicture=UserPic.objects.raw("SELECT * FROM BlackList_app_userpic WHERE userid_id='"+studentid+"'")
+    userpicUrl=''
+    for userpic in foruserPicture:
+        userpicUrl='images/'+str(userpic.picture)
     userid=''
     name=''
     email=''
@@ -113,7 +116,8 @@ def profile(request):
         description=complains.abuseDescription
         complaints.append(description)    
     print(complaints)
-    context={'studentid':userid,'name':name,'email':email,'complain':complaints}
+    context={'studentid':userid,'name':name,'email':email,'complain':complaints,'userpic':userpicUrl}
+    print(context)
     return render(request,"profile.html",context)
 
 @login_required

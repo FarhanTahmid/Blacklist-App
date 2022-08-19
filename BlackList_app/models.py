@@ -1,4 +1,8 @@
+from hashlib import blake2b
+from pyexpat import model
+from tkinter import CASCADE
 from django.db import models
+from django.contrib.auth.models import User
 
 class Users(models.Model):
     userid=models.CharField(max_length=40,null=False,blank=False,verbose_name="Student ID",primary_key=True)
@@ -7,7 +11,9 @@ class Users(models.Model):
     
     def __str__(self):
         return self.userid
-
+class UserPic(models.Model):
+    userid=models.OneToOneField(Users,null=True,on_delete=models.CASCADE)
+    picture=models.ImageField(null=True,blank=True)
 class Complain(models.Model):
     bully_id = models.CharField(max_length=40, null=False, blank=False, verbose_name="Bully ID")
     abuseDescription=models.CharField(max_length=1000,null=False,blank=False,verbose_name="Complain Description")
