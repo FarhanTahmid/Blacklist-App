@@ -268,11 +268,11 @@ button.editbtn i{
 }
 
 .profile-body .profile-complains .card{
-  width: 100%;
+  width: 750px;
   margin-top: 10px;
   margin-bottom: 20px;
-  background: #222;
-  text-align: center;
+  background: crimson;
+  /* text-align: center; */
   border-radius: 10px;
   padding: 50px 25px;
   cursor: pointer;
@@ -310,6 +310,7 @@ button.editbtn i{
 }
 
 .profile-body .profile-complains .card p{
+  list-style-type: none;
   color: white;
 }
 

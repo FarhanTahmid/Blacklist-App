@@ -18,7 +18,7 @@
         <ul class="menu">
           <li><a href="{% url 'BlackList_app:menu_student' %}">Home</a></li>
           <li><a href="{% url 'BlackList_app:profile' %}">Profile</a></li>
-          <li><a href="{% url 'BlackList_app:notifications' %}">Notifications</a></li>
+          <!-- <li><a href="{% url 'BlackList_app:notifications' %}">Notifications</a></li> -->
           <li><a href="{% url 'BlackList_app:homepage' %}">Sign Out</a></li>
         </ul>
       </div>
@@ -66,17 +66,26 @@
             </ul>
           </div>
 
-          {% block content %}
+          <div class="profile-body">
+            <div class="profile-complains">
+              <div class="card">
+                <div class="box">
+                  <!-- <div class="text">Complaints</div> -->
+                  <p>
+                    <ol>
+                      {% for complain in complain %}
+                        <li>{{ complain }}</li>
+                      {% empty %}
+                        <li>No complaints have been registered yet.</li>
+                      {% endfor %}
+                    </ol>
+                  </p>
+                </div>
+              </div>
 
-            <ol>
-              {% for complain in complain %}
-                <li>Anonymous - {{ complain }}</li>
-              {% empty %}
-                <li>No complaints have been registered yet.</li>
-              {% endfor %}
-            </ol>
+            </div>
 
-          {% endblock content %}
+          </div>
 
           <!-- <div class="profile-body">
             <div class="profile-complains">
@@ -89,9 +98,24 @@
 
             </div>
 
-          </div>
+          </div> -->
 
-        </div> -->
+        </div>
+
+          <!-- <div class="profile-body">
+            <div class="profile-complains">
+              <div class="card">
+                <div class="box">
+                  <div class="text">Anonymous</div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna a</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div> -->
+
+        </div>
       </div>
 
     </div>
