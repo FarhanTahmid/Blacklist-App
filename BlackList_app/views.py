@@ -101,7 +101,7 @@ def profile(request):
     foruserPicture=UserPic.objects.raw("SELECT * FROM BlackList_app_userpic WHERE userid_id='"+studentid+"'")
     userpicUrl=''
     for userpic in foruserPicture:
-        userpicUrl='images/'+'fiza_image_XYVfiXb.jpg'
+        userpicUrl='images/'+str(userpic.picture)
     userid=''
     name=''
     email=''
