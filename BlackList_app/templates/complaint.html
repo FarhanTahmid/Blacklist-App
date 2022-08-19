@@ -25,12 +25,13 @@
           <div class="title">Report</div>
           <div class="content">
             <form method="POST" action="complaint">
-              {% csrf_token %} 
+              {% csrf_token %}
               <div class="user-details">
 
                 <div class="input-box">
                   <span class="details">Student ID</span>
                   <input type="text" class="" name="studentId" required placeholder="Enter Bully's Student ID">
+                  <br>
                 </div>
 
                 <div class="file_upload_container">
@@ -76,5 +77,3 @@
 
   </body>
 </html>
-
-  
