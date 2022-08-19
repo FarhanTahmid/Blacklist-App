@@ -9,7 +9,7 @@ class Users(models.Model):
         return self.userid
 
 class Complain(models.Model):
-    bully_id = models.CharField(max_length=40, null=False, blank=False, verbose_name="Bully ID",primary_key=True)
+    bully_id = models.CharField(max_length=40, null=False, blank=False, verbose_name="Bully ID")
     abuseDescription=models.CharField(max_length=1000,null=False,blank=False,verbose_name="Complain Description")
     links=models.URLField(max_length=200,null=False,blank=False,verbose_name="Links")
     anonymity=models.CharField(max_length=20,null=False,blank=False,verbose_name="Anonymity")
