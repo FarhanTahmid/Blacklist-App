@@ -1,22 +1,20 @@
-<!--
-grey - #91A3B0
-purple - #9370DB -->
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
   </head>
   <body>
     <main>
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="" autocomplete="off" class="sign-in-form">
+            <form method="POST" action="login" autocomplete="off" class="sign-in-form">
+              {% csrf_token %}
               <div class="logo">
                 <!-- <img src="logo.png" alt="" /> -->
                 <h4>Black<span>List</span></h4>
@@ -36,8 +34,9 @@ purple - #9370DB -->
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="userName"
                   />
-                  <label>Name</label>
+                  <label>Student ID</label>
                 </div>
 
                 <div class="input-wrap">
@@ -47,11 +46,12 @@ purple - #9370DB -->
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="password"
                   />
                   <label>Password</label>
                 </div>
 
-                <input type="submit" value="Sign In" class="sign-btn" />
+                <input type="submit" value="Log In" class="sign-btn" />
 
                 <p class="text">
                   <a href="#">Forgot Your Password?</a>
@@ -59,7 +59,8 @@ purple - #9370DB -->
               </div>
             </form>
 
-            <form action="" autocomplete="off" class="sign-up-form">
+            <form method="POST" action="signup" autocomplete="off" class="sign-up-form">
+              {% csrf_token %}
               <div class="logo">
                 <!-- <img src="logo.png" alt="" /> -->
                 <h4>Black<span>List</span></h4>
@@ -79,16 +80,31 @@ purple - #9370DB -->
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="userName"
                   />
                   <label>Name</label>
+                </div>
+                
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="studentId"
+                  />
+                  <label>Student ID</label>
                 </div>
 
                 <div class="input-wrap">
                   <input
                     type="email"
+                    minlength="4"
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="email"
                   />
                   <label>Email</label>
                 </div>
@@ -100,8 +116,20 @@ purple - #9370DB -->
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="password"
                   />
                   <label>Password</label>
+                </div>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="confirmPassword"
+                  />
+                  <label>Confirm Password</label>
                 </div>
 
                 <input type="submit" value="Sign Up" class="sign-btn" />
@@ -144,6 +172,6 @@ purple - #9370DB -->
 
     <!-- Javascript file -->
 
-    <script src="login.js"></script>
+    <script src="{% static 'login.js' %}"></script>
   </body>
 </html>
