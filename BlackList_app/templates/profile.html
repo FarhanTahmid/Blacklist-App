@@ -51,7 +51,7 @@
           <div class="profile-side">
             <p class="school"><i class="fa-solid fa-school"></i>Mastermind</p>
             <p class="university"><i class="fa-solid fa-building-columns"></i>North South University</p>
-            <p class="user-mail"><i class="fa fa-envelope"></i>zaedkhan2019@gmail.com</p><br>
+            <p class="user-mail"><i class="fa fa-envelope"></i>{{ email }}</p><br>
             <div class="profile-btn">
               <!-- <button class="chatbtn"><i class="fa fa-comment"></i>Chat</button> -->
               <button class="editbtn"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
@@ -69,8 +69,8 @@
           {% block content %}
 
             <ol>
-              {% for complaint in complaints %}
-                <li>{{ complaint.studentId }} - {{ complaint.abuseDescription }}</li>
+              {% for complain in complain %}
+                <li>Anonymous - {{ complain }}</li>
               {% empty %}
                 <li>No complaints have been registered yet.</li>
               {% endfor %}

@@ -10,11 +10,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from . import addUsersToDatabase
-#from . import addComplainsToDatabase
+from . import addComplainsToDatabase
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.db import connections
-from .models import Users
+from .models import Users,Complain
 
 def homepage(request):
     return render(request,'homepage.html')
@@ -106,19 +106,14 @@ def profile(request):
         userid=person.userid
         name=person.name
         email=person.email
-    context={'studentid':userid,'name':name,'email':email}
-    
-    complainFinder=Complaints.objects.raw("SELECT * FROM BlackList_app_complaints WHERE studentId='"+studentid+"'")
+    print(studentid)
+    complainFinder=Complain.objects.raw("SELECT * FROM BlackList_app_complain WHERE bully_id='"+studentid+"'")
     complaints=[]
     for complains in complainFinder:
         description=complains.abuseDescription
         complaints.append(description)    
     print(complaints)
-    # complaints = Complaints.objects.filter(owner=request.user)
-    # if complaints.owner != request.user:
-    #     raise Http404
-    # # complaint = complaints.abuseDescription
-    # context = {'complaints':complaints}
+    context={'studentid':userid,'name':name,'email':email,'complain':complaints}
     return render(request,"profile.html",context)
 
 @login_required
